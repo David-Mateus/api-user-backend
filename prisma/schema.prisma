@@ -11,8 +11,8 @@ datasource db {
 }
 
 model User{
-  id       Int      @id @default(autoincrement())
-  username      String @unique
+  id            Int         @id @default(autoincrement())
+  username      String      @unique
   password      String
 
   // Relacionamento um para muitos com posters
@@ -20,7 +20,7 @@ model User{
 }
 
 model Poster{
-  id       Int      @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   title    String
   content  String
   createdAt DateTime @default(now())
