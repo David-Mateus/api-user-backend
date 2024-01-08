@@ -1,7 +1,9 @@
 import bcrypt from "bcryptjs";
+import { userValidation } from "../validations/user.validation";
 import { createUser, getAllUsers,deleteUser, getOneUsers } from "../repositorys/user.repository";
 export const create = async (req, res) => {
     try{
+        await userValidation.validate(req.body);
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         req.body.password = hashedPassword;
         const user = await createUser(req.body);

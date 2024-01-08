@@ -1,7 +1,8 @@
 import { createPoster, getAllPosters, getOnePoster, putPoster, deletePoster } from "../repositorys/poster.repository";
-
+import { posterValidation } from "../validations/poster.validation";
 export const createPosters = async (req, res) => {
     try{
+        await posterValidation.validate(req.body);
         const {title, content, singerUsername} = req.body;
         const poster = await createPoster({title, content, singerUsername});
         res.status(200).send(poster);
