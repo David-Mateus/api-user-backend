@@ -8,8 +8,6 @@ export const createUser = async (data) => {
         select:{
             id: true,
             username: true,
-            password:false,
-            
         }
     });
     return user;
@@ -20,7 +18,6 @@ export const getAllUsers = async () => {
         select:{
             id: true,
             username: true,
-            password:false,
             
         }
     })
