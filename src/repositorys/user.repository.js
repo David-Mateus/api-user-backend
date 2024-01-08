@@ -23,6 +23,20 @@ export const getAllUsers = async () => {
     })
     return users;
 }
+// retorna usuario pelo id
+export const getOneUsers = async (id) => {
+    const user = await prisma.user.findUnique({
+        where:{
+            id,
+        },
+        select:{
+            id: true,
+            username: true,
+            
+        },
+    });
+    return user;
+}
 // excluir usuário
 export const deleteUser = async(id) => {
     await prisma.user.delete({

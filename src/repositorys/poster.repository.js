@@ -60,3 +60,11 @@ export const putPoster = async (id, {title, content}) => {
     })
     return poster;
 }
+
+export const deletePoster = async (id) => {
+    await prisma.poster.delete({
+        where:{
+            id,
+        },
+    });
+}

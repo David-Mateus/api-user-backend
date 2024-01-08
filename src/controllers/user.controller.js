@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { createUser, getAllUsers,deleteUser } from "../repositorys/user.repository";
+import { createUser, getAllUsers,deleteUser, getOneUsers } from "../repositorys/user.repository";
 export const create = async (req, res) => {
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -16,6 +16,14 @@ export const getAll = async (req, res) => {
         res.status(200).send(users);
     }catch(e){
         res.status(400).send(e);
+    }
+}
+export const getOne = async (req, res) => {
+    try {
+        const user = await getOneUsers(Number(req.params.id));
+        res.status(200).send(user);
+    } catch (error) {
+        res.status(400).send(error);
     }
 }
 export const remove = async (req, res) => {

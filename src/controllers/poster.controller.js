@@ -1,4 +1,4 @@
-import { createPoster, getAllPosters, getOnePoster, putPoster } from "../repositorys/poster.repository";
+import { createPoster, getAllPosters, getOnePoster, putPoster, deletePoster } from "../repositorys/poster.repository";
 
 export const createPosters = async (req, res) => {
     try{
@@ -29,6 +29,14 @@ export const putPosters = async (req, res) => {
     try {
         const poster = await putPoster(Number(req.params.id), req.body);
         res.status(200).send(poster);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+export const deletePosters = async (req, res) => {
+    try {
+        await deletePoster(Number(req.params.id));
+        res.status(200).send("Poster excluído com sucesso!");
     } catch (error) {
         res.status(400).send(error);
     }
