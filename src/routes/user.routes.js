@@ -1,5 +1,5 @@
 import {create, getAll, remove} from "../controllers/user.controller";
-import {createPosters, getAllPoster, getOnePosters} from "../controllers/poster.controller";
+import {createPosters, getAllPoster, getOnePosters, putPosters} from "../controllers/poster.controller";
 
 const userRoutes = (app) => {
     app.post("/user", create);
@@ -7,6 +7,7 @@ const userRoutes = (app) => {
     app.get("/user", getAll);
     app.get("/poster", getAllPoster);
     app.get("/poster/:id", getOnePosters);
+    app.put("/poster/:id", putPosters)
     app.delete("/user/:id", remove);
 }
 export default userRoutes;

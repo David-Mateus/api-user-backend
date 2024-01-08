@@ -48,3 +48,15 @@ export const getOnePoster = async (id) => {
     });
     return posrt;
 }
+export const putPoster = async (id, {title, content}) => {
+    const poster = await prisma.poster.update({
+        where:{
+            id,
+        },
+        data:{
+            title,
+            content,
+        },
+    })
+    return poster;
+}
